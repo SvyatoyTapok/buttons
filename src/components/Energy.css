@@ -1,0 +1,11 @@
+.energy{
+    display: flex;
+    padding-right: 5px;
+  }
+.inline-info{
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 20px;
+    color: black;
+    font-weight: bold;
+}

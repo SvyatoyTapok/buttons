@@ -1,0 +1,115 @@
+.main_block {
+  display: flex;
+  width: 100vw;
+  height: 94.6vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.text_block {
+  padding-left: 30px;
+}
+
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clicked {
+  background-color: rgb(21, 177, 120);
+  transition-property: color, background-color;
+  transition-duration: 0.5s;
+  color: white;
+}
+.switched {
+  background-color: rgba(0, 255, 132, 0.517);
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+.white {
+  color: white;
+  transition-duration: 0.5s;
+  transition-property: color;
+}
+.black {
+  color: black;
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+.price_box {
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+.price,
+.curency {
+  font-size: 28px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+}
+.price {
+  margin-right: 10px;
+}
+.cart {
+  display: flex;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  background-color: rgb(21, 177, 120);
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  color: white;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.switched_cart {
+  background-color: rgb(4, 101, 54);
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+.cart_box {
+  display: flex;
+  align-items: center;
+}
+.like {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.footer_box {
+  width: 100vw;
+
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(136, 165, 199);
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+}
+.icon_delete {
+  display: flex;
+  width: 25px;
+  height: 25px;
+}
+.footer_text {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+}
+.visible {
+  display: flex;
+}
+.text_weight {
+  display: flex;
+  padding-right: 35px;
+}
