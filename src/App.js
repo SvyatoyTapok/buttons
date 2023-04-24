@@ -72,14 +72,6 @@ function App() {
 
   const [activeFooter, setActiveFooter] = React.useState(false);
 
-  const [activePizza, setActivePizza] = React.useState({
-    price: Product.price,
-    weight: Product.weight,
-    energy: Product.energy,
-    type: Product.type,
-    size: Product.size,
-  });
-
   const [cartSum, setCartSum] = React.useState(0);
 
   return (
@@ -91,23 +83,15 @@ function App() {
           <Title value={Product.title} />
           <Description value={Product.description} />
           <div className="inline-info">
-            <Weight value={activePizza.weight} />
-            <Energy value={activePizza.energy} />
+            <Weight value={Product.weight} />
+            <Energy value={Product.energy} />
           </div>
-          <Buttons
-            defaultProduct={Product}
-            onClick={setActivePizza}
-            additionalVariants={Product.additionalVariants}
-          />
+          <Buttons array={Product.additionalVariants} />
           <div className="price_box">
-            <Price value={activePizza.price} />
+            <Price value={Product.price} />
           </div>
           <div className="cart_box">
-            <AddCart
-              value={activePizza.price}
-              setCartSum={setCartSum}
-              setActiveFooter={setActiveFooter}
-            />
+            <AddCart setCartSum={setCartSum} setActiveFooter={setActiveFooter} />
             <div className="like">
               <img src={LikeIcon} alt="LikeImg" />
             </div>

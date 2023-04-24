@@ -1,13 +1,4 @@
-function FooterCart(props){
-
-
-
-    return(
-        <div>
-            
-            {props.value}
-            
-        </div>
-    )
+function FooterCart(props) {
+  return <div>{props.value}</div>;
 }
-export default FooterCart
+export default FooterCart;

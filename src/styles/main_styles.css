@@ -10,13 +10,6 @@
   padding-left: 30px;
 }
 
-.buttons {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .clicked {
   background-color: rgb(21, 177, 120);
   transition-property: color, background-color;
@@ -87,6 +80,7 @@
 }
 .footer_box {
   width: 100vw;
+  transition-duration: 0.5s;
 
   justify-content: center;
   text-align: center;
@@ -105,11 +99,4 @@
 .footer_text {
   font-family: "Quicksand", sans-serif;
   font-size: 16px;
-}
-.visible {
-  display: flex;
-}
-.text_weight {
-  display: flex;
-  padding-right: 35px;
 }
