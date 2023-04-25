@@ -2,13 +2,27 @@ import "./Buttons.css";
 import React from "react";
 
 function Buttons(props) {
+
+  const myArray = props.array
+  console.log(myArray)
+
+
   const upButtons = ["Обычное тесто", "Тонкое тесто"];
-  const bottomButtons = ["Маленькая", "Средняя", "Большая"];
+  const defaultBottomButtons = ["Маленькая", "Средняя", "Большая"];
 
   const [activeTypeButton, setActiveTypeButton] = React.useState(0);
   const [activeSizeButton, setActiveSizeButton] = React.useState(0);
-  const [deletedSmall, setDeletedSmall] = React.useState(false);
 
+  const [bottomButtons, setBottomButtons] = React.useState(defaultBottomButtons);
+
+  const deleteSmall = () => {
+    let smallButton = defaultBottomButtons.indexOf("Маленькая");
+    if (smallButton !== -1) {
+      defaultBottomButtons.splice(smallButton, 1);
+    }
+    setBottomButtons(defaultBottomButtons);
+  };
+ 
   return (
     <div className="buttons">
       <div className="type">
@@ -17,11 +31,16 @@ function Buttons(props) {
             key={value}
             onClick={() => {
               setActiveTypeButton(i);
+              if (i === 0) {
+                setBottomButtons(defaultBottomButtons)
+                setActiveSizeButton(0);
+              }
               if (i === 1) {
-                console.log("ya nazhal na thin");
+                deleteSmall();
+                setActiveSizeButton(0);
               }
             }}
-            className={activeTypeButton === i ? "type_buttons clicked" : "type_buttons"}
+            className={activeTypeButton === i ? "current_buttons clicked" : "current_buttons"}
           >
             {value}
           </div>
@@ -33,9 +52,8 @@ function Buttons(props) {
             key={value}
             onClick={() => {
               setActiveSizeButton(i);
-              setDeletedSmall(true);
             }}
-            className={activeSizeButton === i ? "size_buttons clicked" : "size_buttons"}
+            className={activeSizeButton === i ? "current_buttons clicked" : "current_buttons"}
           >
             {value}
           </div>
