@@ -2,11 +2,6 @@ import "./Buttons.css";
 import React from "react";
 
 function Buttons(props) {
-
-  const myArray = props.array
-  console.log(myArray)
-
-
   const upButtons = ["Обычное тесто", "Тонкое тесто"];
   const defaultBottomButtons = ["Маленькая", "Средняя", "Большая"];
 
@@ -22,7 +17,7 @@ function Buttons(props) {
     }
     setBottomButtons(defaultBottomButtons);
   };
- 
+
   return (
     <div className="buttons">
       <div className="type">
@@ -32,7 +27,7 @@ function Buttons(props) {
             onClick={() => {
               setActiveTypeButton(i);
               if (i === 0) {
-                setBottomButtons(defaultBottomButtons)
+                setBottomButtons(defaultBottomButtons);
                 setActiveSizeButton(0);
               }
               if (i === 1) {
