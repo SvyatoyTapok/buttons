@@ -2,7 +2,7 @@ import React from "react";
 
 function AddCart(props) {
   const handleClick = () => {
-    props.setCartSum((prevValue) => prevValue + props.value);
+    props.setCartSum((prevValue) => prevValue+props.value);
     props.setActiveFooter(true);
   };
   return (

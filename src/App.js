@@ -26,8 +26,8 @@ function App() {
     weight: 700,
     energy: 2220,
 
-    size: "s",
-    type: "common",
+    size: "Маленькая",
+    type: "Обычное тесто",
     id: "73f5cd52-2c0d-44a0-b902-d267501a35b1",
 
     additionalVariants: [
@@ -36,8 +36,8 @@ function App() {
         weight: 900,
         energy: 2620,
 
-        size: "m",
-        type: "common",
+        size: "Средняя",
+        type: "Обычное тесто",
         id: "43a76941-c7df-467f-9d43-834c80fb5dc2",
       },
       {
@@ -45,8 +45,8 @@ function App() {
         weight: 1100,
         energy: 300,
 
-        size: "l",
-        type: "common",
+        size: "Большая",
+        type: "Обычное тесто",
         id: "86544daa-6017-42c2-ab3e-cd689b675bae",
       },
       {
@@ -54,8 +54,8 @@ function App() {
         weight: 800,
         energy: 2340,
 
-        size: "m",
-        type: "thin",
+        size: "Средняя",
+        type: "Тонкое тесто",
         id: "0d716812-9557-4cee-9ed1-e9a8b6dd622f",
       },
       {
@@ -63,16 +63,25 @@ function App() {
         weight: 1000,
         energy: 2780,
 
-        size: "l",
-        type: "thin",
+        size: "Большая",
+        type: "Тонкое тесто",
         id: "920f2164-8c0a-4000-ad6b-016d229f15a5",
       },
     ],
   };
 
   const [activeFooter, setActiveFooter] = React.useState(false);
-
   const [cartSum, setCartSum] = React.useState(0);
+  const [currentPrice, setCurrentPrice] = React.useState(0);
+  const [currentWeight,setCurrentWeight]=React.useState(700);
+  const [currentEnergy,setCurrentEnergy]=React.useState(2220)
+
+  let unsortedTypeArray = Product.additionalVariants.map((value, index) => value.type);
+  let unsortedSizeArray = Product.additionalVariants.map((value, index) => value.size);
+  unsortedTypeArray.unshift(Product.type);
+  const typeArray = Array.from(new Set(unsortedTypeArray));
+  unsortedSizeArray.unshift(Product.size);
+  let sizeArray = Array.from(new Set(unsortedSizeArray));
 
   return (
     <>
@@ -83,15 +92,26 @@ function App() {
           <Title value={Product.title} />
           <Description value={Product.description} />
           <div className="inline-info">
-            <Weight value={Product.weight} />
-            <Energy value={Product.energy} />
+            <Weight value={currentWeight} />
+            <Energy value={currentEnergy} />
           </div>
-          <Buttons array={Product.additionalVariants} />
+          <Buttons
+            typeArray={typeArray}
+            sizeArray={sizeArray}
+            setCurrentPrice={setCurrentPrice}
+            setCurrentWeight={setCurrentWeight}
+            setCurrentEnergy={setCurrentEnergy}
+            array={Product.additionalVariants}
+          />
           <div className="price_box">
-            <Price value={Product.price} />
+            <Price value={currentPrice} />
           </div>
           <div className="cart_box">
-            <AddCart setCartSum={setCartSum} setActiveFooter={setActiveFooter} />
+            <AddCart
+              value={Product.price}
+              setCartSum={setCartSum}
+              setActiveFooter={setActiveFooter}
+            />
             <div className="like">
               <img src={LikeIcon} alt="LikeImg" />
             </div>

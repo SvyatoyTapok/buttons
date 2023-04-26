@@ -2,8 +2,8 @@ import "./Buttons.css";
 import React from "react";
 
 function Buttons(props) {
-  const upButtons = ["Обычное тесто", "Тонкое тесто"];
-  const defaultBottomButtons = ["Маленькая", "Средняя", "Большая"];
+  const typeArray = props.typeArray
+  const defaultBottomButtons = props.sizeArray
 
   const [activeTypeButton, setActiveTypeButton] = React.useState(0);
   const [activeSizeButton, setActiveSizeButton] = React.useState(0);
@@ -18,17 +18,24 @@ function Buttons(props) {
     setBottomButtons(defaultBottomButtons);
   };
 
+const returnButton = () =>{
+  if (bottomButtons[0] !== "Маленькая"){
+    bottomButtons.unshift("Маленькая")
+  }
+}
+
   return (
     <div className="buttons">
       <div className="type">
-        {upButtons.map((value, i) => (
+        {typeArray.map((value, i) => (
           <div
             key={value}
             onClick={() => {
+
               setActiveTypeButton(i);
               if (i === 0) {
-                setBottomButtons(defaultBottomButtons);
                 setActiveSizeButton(0);
+                returnButton()
               }
               if (i === 1) {
                 deleteSmall();
@@ -46,6 +53,7 @@ function Buttons(props) {
           <div
             key={value}
             onClick={() => {
+              props.setCurrentPrice(props.array[i].price)
               setActiveSizeButton(i);
             }}
             className={activeSizeButton === i ? "current_buttons clicked" : "current_buttons"}

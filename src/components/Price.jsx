@@ -1,11 +1,11 @@
 import React from "react"
 
 
-function Price ({value}){
+function Price (props){
 
     return(
         <div  className="price">
-            {value}
+            {props.value}
         </div>
     )
 }
