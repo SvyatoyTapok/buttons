@@ -2,8 +2,8 @@ import "./Buttons.css";
 import React from "react";
 
 function Buttons(props) {
-  const typeArray = props.typeArray
-  const defaultBottomButtons = props.sizeArray
+  const typeArray = props.typeArray;
+  const defaultBottomButtons = props.sizeArray;
 
   const [activeTypeButton, setActiveTypeButton] = React.useState(0);
   const [activeSizeButton, setActiveSizeButton] = React.useState(0);
@@ -18,11 +18,11 @@ function Buttons(props) {
     setBottomButtons(defaultBottomButtons);
   };
 
-const returnButton = () =>{
-  if (bottomButtons[0] !== "Маленькая"){
-    bottomButtons.unshift("Маленькая")
-  }
-}
+  const returnButton = () => {
+    if (bottomButtons[0] !== "Маленькая") {
+      bottomButtons.unshift("Маленькая");
+    }
+  };
 
   return (
     <div className="buttons">
@@ -31,15 +31,20 @@ const returnButton = () =>{
           <div
             key={value}
             onClick={() => {
-
               setActiveTypeButton(i);
               if (i === 0) {
                 setActiveSizeButton(0);
-                returnButton()
+                returnButton();
+                props.setCurrentPrice(props.startArray.price);
+                props.setCurrentWeight(props.startArray.weight);
+                props.setCurrentEnergy(props.startArray.energy);
               }
               if (i === 1) {
                 deleteSmall();
                 setActiveSizeButton(0);
+                props.setCurrentPrice(props.array[2].price);
+                props.setCurrentWeight(props.array[2].weight);
+                props.setCurrentEnergy(props.array[2].energy);
               }
             }}
             className={activeTypeButton === i ? "current_buttons clicked" : "current_buttons"}
@@ -53,7 +58,9 @@ const returnButton = () =>{
           <div
             key={value}
             onClick={() => {
-              props.setCurrentPrice(props.array[i].price)
+              props.setCurrentPrice(props.array[i].price);
+              props.setCurrentWeight(props.array[i].weight);
+              props.setCurrentEnergy(props.array[i].energy);
               setActiveSizeButton(i);
             }}
             className={activeSizeButton === i ? "current_buttons clicked" : "current_buttons"}

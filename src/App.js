@@ -72,9 +72,9 @@ function App() {
 
   const [activeFooter, setActiveFooter] = React.useState(false);
   const [cartSum, setCartSum] = React.useState(0);
-  const [currentPrice, setCurrentPrice] = React.useState(0);
-  const [currentWeight,setCurrentWeight]=React.useState(700);
-  const [currentEnergy,setCurrentEnergy]=React.useState(2220)
+  const [currentPrice, setCurrentPrice] = React.useState(Product.price);
+  const [currentWeight, setCurrentWeight] = React.useState(Product.weight);
+  const [currentEnergy, setCurrentEnergy] = React.useState(Product.energy);
 
   let unsortedTypeArray = Product.additionalVariants.map((value, index) => value.type);
   let unsortedSizeArray = Product.additionalVariants.map((value, index) => value.size);
@@ -102,13 +102,14 @@ function App() {
             setCurrentWeight={setCurrentWeight}
             setCurrentEnergy={setCurrentEnergy}
             array={Product.additionalVariants}
+            startArray={Product}
           />
           <div className="price_box">
             <Price value={currentPrice} />
           </div>
           <div className="cart_box">
             <AddCart
-              value={Product.price}
+              value={currentPrice}
               setCartSum={setCartSum}
               setActiveFooter={setActiveFooter}
             />
