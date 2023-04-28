@@ -76,12 +76,23 @@ function App() {
   const [currentWeight, setCurrentWeight] = React.useState(Product.weight);
   const [currentEnergy, setCurrentEnergy] = React.useState(Product.energy);
 
-  let unsortedTypeArray = Product.additionalVariants.map((value, index) => value.type);
-  let unsortedSizeArray = Product.additionalVariants.map((value, index) => value.size);
-  unsortedTypeArray.unshift(Product.type);
-  const typeArray = Array.from(new Set(unsortedTypeArray));
-  unsortedSizeArray.unshift(Product.size);
-  let sizeArray = Array.from(new Set(unsortedSizeArray));
+  let unsortedTypeArray = [];
+  for (let i = 0; i < Product.additionalVariants.length; i++) {
+    unsortedTypeArray.push(Product.additionalVariants[i].type);
+  }
+
+  let typeArray = unsortedTypeArray.unshift(Product.type);
+  typeArray = Array.from(new Set(unsortedTypeArray));
+
+
+
+  let unsortedSizeArray = [];
+  for (let i = 0; i < Product.additionalVariants.length; i++) {
+    unsortedSizeArray.push(Product.additionalVariants[i].size);
+  }
+
+  let sizeArray = unsortedSizeArray.unshift(Product.size);
+  sizeArray = Array.from(new Set(unsortedSizeArray));
 
   return (
     <>
@@ -96,13 +107,12 @@ function App() {
             <Energy value={currentEnergy} />
           </div>
           <Buttons
+          sizeArray={sizeArray}
             typeArray={typeArray}
-            sizeArray={sizeArray}
             setCurrentPrice={setCurrentPrice}
             setCurrentWeight={setCurrentWeight}
             setCurrentEnergy={setCurrentEnergy}
-            array={Product.additionalVariants}
-            startArray={Product}
+            additionalVariants={Product.additionalVariants}
           />
           <div className="price_box">
             <Price value={currentPrice} />
@@ -123,7 +133,12 @@ function App() {
         <div className="footer_box">
           <FooterCart value={cartSum} />
           <div className="footer_clear">
-            <img src={TrashIcon} alt="TrashImg" className="icon_delete" />
+            <img
+              onClick={() => setCartSum(0)}
+              src={TrashIcon}
+              alt="TrashImg"
+              className="icon_delete"
+            />
           </div>
         </div>
       )}

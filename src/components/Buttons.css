@@ -6,7 +6,7 @@
   transition-duration: 0.5s;
   transition-property: background-color;
   cursor: pointer;
- width: 370px;
+  width: 370px;
 }
 .type,
 .size {
@@ -25,5 +25,4 @@
   transition-property: background-color;
   cursor: pointer;
   text-align: center;
-
 }

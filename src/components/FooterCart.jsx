@@ -1,4 +1,4 @@
 function FooterCart(props) {
-  return <div>{props.value}</div>;
+  return <div>Сумма вашего заказа: {props.value} ₽</div>;
 }
 export default FooterCart;

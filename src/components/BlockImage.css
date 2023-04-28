@@ -1,8 +1,8 @@
-.block_image{
-    width: 470px;
-    box-shadow: 0.4em 0.10em  25px rgba(122,122,122,0.5);
-    border-radius: 20px;
-    }
-.pizza_image{
-    border-radius: 20px;
+.block_image {
+  width: 470px;
+  box-shadow: 0.4em 0.1em 25px rgba(122, 122, 122, 0.5);
+  border-radius: 20px;
+}
+.pizza_image {
+  border-radius: 20px;
 }

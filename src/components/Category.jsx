@@ -1,9 +1,6 @@
-import "./Category.css"
+import "./Category.css";
 
-function Category(props){
-return(
-    <div className="category">
-        {props.value}
-    </div>
-)}
-export default Category
+function Category(props) {
+  return <div className="category">{props.value}</div>;
+}
+export default Category;

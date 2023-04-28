@@ -1,10 +1,6 @@
-import "./Energy.css"
+import "./Energy.css";
 
-function Energy(props){
-    return(
-        <div className="energy">
-             {props.value + " ккал"}    
-        </div>
-    );
+function Energy(props) {
+  return <div className="energy">{props.value + " ккал"}</div>;
 }
-export default Energy
+export default Energy;
