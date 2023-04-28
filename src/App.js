@@ -58,6 +58,7 @@ function App() {
         type: "Тонкое тесто",
         id: "0d716812-9557-4cee-9ed1-e9a8b6dd622f",
       },
+
       {
         price: 500,
         weight: 1000,
@@ -84,8 +85,6 @@ function App() {
   let typeArray = unsortedTypeArray.unshift(Product.type);
   typeArray = Array.from(new Set(unsortedTypeArray));
 
-
-
   let unsortedSizeArray = [];
   for (let i = 0; i < Product.additionalVariants.length; i++) {
     unsortedSizeArray.push(Product.additionalVariants[i].size);
@@ -107,7 +106,8 @@ function App() {
             <Energy value={currentEnergy} />
           </div>
           <Buttons
-          sizeArray={sizeArray}
+            mainArray={Product}
+            sizeArray={sizeArray}
             typeArray={typeArray}
             setCurrentPrice={setCurrentPrice}
             setCurrentWeight={setCurrentWeight}
@@ -146,3 +146,4 @@ function App() {
   );
 }
 export default App;
+//thx for help, Artem and Andrey :D
