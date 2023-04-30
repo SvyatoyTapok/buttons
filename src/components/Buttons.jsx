@@ -30,8 +30,7 @@ function Buttons(props) {
     (obj) => obj.type === props.typeArray[activeTypeButton]
   );
 
-
-
+ 
   return (
     <div className="buttons">
       <div className="type">
@@ -42,6 +41,7 @@ function Buttons(props) {
               setActiveTypeButton(index);
               setActiveSizeButton(0);
 
+              props.setCurrentPrice(clickedTypeOfSizeArray[0].price);
               
             }}
             key={index}
@@ -68,6 +68,7 @@ function Buttons(props) {
       </div>
     </div>
   );
+  
 }
 
 export default Buttons;
