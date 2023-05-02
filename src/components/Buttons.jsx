@@ -1,11 +1,9 @@
 import "./Buttons.css";
 import React from "react";
-
+import { motion } from "framer-motion";
 function Buttons(props) {
   const [activeTypeButton, setActiveTypeButton] = React.useState(0);
   const [activeSizeButton, setActiveSizeButton] = React.useState(0);
-  
-
   if (props.additionalVariants[0].size !== props.mainArray.size) {
     props.additionalVariants.unshift({
       price: props.mainArray.price,
@@ -15,7 +13,6 @@ function Buttons(props) {
       type: props.mainArray.type,
     });
   }
-
   if (props.additionalVariants[0].type !== props.mainArray.type) {
     props.additionalVariants.unshift({
       price: props.mainArray.price,
@@ -25,34 +22,38 @@ function Buttons(props) {
       type: props.mainArray.type,
     });
   }
-
   let clickedTypeOfSizeArray = props.additionalVariants.filter(
     (obj) => obj.type === props.typeArray[activeTypeButton]
   );
-
- 
+  console.log(clickedTypeOfSizeArray);
   return (
     <div className="buttons">
       <div className="type">
         {props.typeArray.map((value, index) => (
-          <div
+          <motion.div
+          
+            whileTap={{
+              scale: 1.1,
+            }}
             className={activeTypeButton === index ? "current_buttons clicked" : "current_buttons"}
             onClick={() => {
               setActiveTypeButton(index);
-              setActiveSizeButton(0);
 
-              props.setCurrentPrice(clickedTypeOfSizeArray[0].price);
-              
+              setActiveSizeButton(0);
             }}
             key={index}
           >
             {value}
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className="size">
         {clickedTypeOfSizeArray.map((value, index) => (
-          <div
+          <motion.div
+          
+            whileTap={{
+              scale: 1.1,
+            }}
             className={activeSizeButton === index ? "current_buttons clicked" : "current_buttons"}
             onClick={() => {
               setActiveSizeButton(index);
@@ -63,12 +64,11 @@ function Buttons(props) {
             key={index}
           >
             {value.size}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
   );
-  
 }
 
 export default Buttons;

@@ -1,14 +1,14 @@
 import React from "react";
-
+import {motion } from "framer-motion";
 function AddCart(props) {
   const handleClick = () => {
     props.setCartSum((lastValue) => lastValue + props.value);
     props.setActiveFooter(true);
   };
   return (
-    <div onClick={handleClick} className="cart">
+    <motion.div whileTap={{scale:1.1}} onClick={handleClick} className="cart">
       В корзину
-    </div>
+    </motion.div>
   );
 }
 export default AddCart;
