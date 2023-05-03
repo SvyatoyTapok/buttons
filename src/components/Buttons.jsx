@@ -38,8 +38,11 @@ function Buttons(props) {
             className={activeTypeButton === index ? "current_buttons clicked" : "current_buttons"}
             onClick={() => {
               setActiveTypeButton(index);
-
               setActiveSizeButton(0);
+
+              props.setCurrentPrice(clickedTypeOfSizeArray[0].price)
+              props.setCurrentWeight(clickedTypeOfSizeArray[0].weight)
+              props.setCurrentEnergy(clickedTypeOfSizeArray[0].energy)
             }}
             key={index}
           >
