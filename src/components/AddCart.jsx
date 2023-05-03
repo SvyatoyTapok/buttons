@@ -6,7 +6,7 @@ function AddCart(props) {
     props.setActiveFooter(true);
   };
   return (
-    <motion.div whileTap={{scale:1.1}} onClick={handleClick} className="cart">
+    <motion.div whileHover={{scale:1.05}} whileTap={{scale:1}} onClick={handleClick} className="cart">
       В корзину
     </motion.div>
   );

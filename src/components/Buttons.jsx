@@ -31,9 +31,9 @@ function Buttons(props) {
       <div className="type">
         {props.typeArray.map((value, index) => (
           <motion.div
-          
+         
             whileTap={{
-              scale: 1.1,
+              scale: 0.9,
             }}
             className={activeTypeButton === index ? "current_buttons clicked" : "current_buttons"}
             onClick={() => {
@@ -52,7 +52,7 @@ function Buttons(props) {
           <motion.div
           
             whileTap={{
-              scale: 1.1,
+              scale: 0.9,
             }}
             className={activeSizeButton === index ? "current_buttons clicked" : "current_buttons"}
             onClick={() => {

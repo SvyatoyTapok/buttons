@@ -9,7 +9,7 @@ function BlockImage(props) {
         src={props.source}
         
         transition={{
-          duration:1,
+          duration:0.33,
         }}
         whileHover={{
           scale:1.05,
