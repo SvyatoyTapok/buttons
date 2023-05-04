@@ -24,10 +24,10 @@ function Buttons(props) {
     });
   }
 
- let clickedTypeOfSizeArray = props.additionalVariants.filter(
+  let clickedTypeOfSizeArray = props.additionalVariants.filter(
     (obj) => obj.type === props.typeArray[activeTypeButton]
   );
-  
+
   return (
     <div className="buttons">
       <div className="type">
@@ -40,12 +40,14 @@ function Buttons(props) {
             onClick={() => {
               setActiveTypeButton(index);
               setActiveSizeButton(0);
-              
+
               clickedTypeOfSizeArray = props.additionalVariants.filter(
                 (obj) => obj.type === props.typeArray[index]
               );
 
-              props.setCurrentPrice(clickedTypeOfSizeArray[0].price)
+              props.setCurrentPrice(clickedTypeOfSizeArray[0].price);
+              props.setCurrentWeight(clickedTypeOfSizeArray[0].weight);
+              props.setCurrentEnergy(clickedTypeOfSizeArray[0].energy);
             }}
             key={index}
           >
