@@ -1,17 +1,23 @@
 body{
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(141, 141, 141);
 }
 .global_block{
   height: 100vh;
   display: flex;
-  
+  justify-content: space-around;
  
 }
 .main_block {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 640px;
+  width: 500px;
+  box-shadow: 0.4em 0.4em 25px 0.4em rgba(42, 105, 56, 0.5);
+  height: 800px;
+  margin-top: 70px;
+  border-radius: 20px;
+  margin-right: 10px;
+  background-color: rgb(255, 255, 255);
 }
 
 .text_block {

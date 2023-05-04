@@ -10,12 +10,13 @@ import Product1 from "./Product1"
 import Product2 from "./Product2"
 import Product3 from "./Product3"
 function App() {
-  
+
   const [cartSum, setCartSum] = React.useState(0);
   const [activeFooter, setActiveFooter] = React.useState(false);
 
   return (
     <div className="global_block">
+      
       <FirstProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product1} />
       <SecondProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product2} />
       <ThirdProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product3} />
