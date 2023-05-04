@@ -49,10 +49,11 @@ function SecondProduct({Product, setCartSum, setActiveFooter}) {
           duration:2
         }}
         >
-          <BlockImage source={Product.image} />
+         
           <div className="text_block">
             <Category value={Product.category} />
             <Title value={Product.title} />
+            <BlockImage source={Product.image} />
             <Description value={Product.description} />
             <motion.div
             className="inline-info">
