@@ -1,21 +1,14 @@
 import "./styles/reset.css";
 import "./styles/main_styles.css";
-import {motion } from "framer-motion";
-import Weight from "./components/Weight";
-import Energy from "./components/Energy";
-import Category from "./components/Category";
-import Title from "./components/Title";
-import Description from "./components/Description";
-import Price from "./components/Price";
-import FooterCart from "./components/FooterCart";
-import AddCart from "./components/AddCart";
-import BlockImage from "./components/BlockImage";
-import Buttons from "./components/Buttons";
-import TrashIcon from "./img/deleteicon.png";
 import React from "react";
-
+import FirstProduct from "./components/FirstProduct"
+import SecondProduct from "./components/SecondProduct"
+import ThirdProduct from "./components/ThirdProduct"
+import TrashIcon from "./img/deleteicon.png"
+import FooterCart from "./components/FooterCart";
 function App() {
-  const Product = {
+
+  const Product1 = {
     title: "8 Сезонов",
     category: "Пицца",
     description:
@@ -68,119 +61,112 @@ function App() {
         type: "Тонкое тесто",
         id: "920f2164-8c0a-4000-ad6b-016d229f15a5",
       },
-      
+    ],
+  };
+  const Product2 = {
+    title: "Бурритос",
+    category: "Пицца",
+    description:
+      "Кукуруза, репчатый лук, томаты, фасоль, цыпленок Фахитос, моцарелла, пикантный соус Сальса.",
+    image: "https://joyspizza.ru/public/images/1598450046200-TeleClub41.jpg",
+  
+    price: 500,
+    weight: 1000,
+    energy: 640,
+  
+    size: "Большая",
+    type: "Тонкое тесто",
+    id: "73f5cd52-2c0d-44a0-b902-86544daa",
+  
+    additionalVariants: [
+      {
+        price: 650,
+        weight: 1320,
+        energy: 830,
+  
+        size: "XL",
+        type: "Тонкое тесто",
+        id: "86544daa-6017-42c2-ab3e-73f5cd52",
+      },
     ],
   };
 
-  const [activeFooter, setActiveFooter] = React.useState(false);
+  const Product3 = {
+    title: "Густо де Эспанья",
+    category: "Пицца",
+    description: "бекон, ветчина, шампиньоны, томаты, сырный соус Чеддер, сыр моцарелла.",
+    image: "https://joyspizza.ru/public/images/1647971531738-1577650129425-TelePizzDek039.jpg",
+  
+    price: 300,
+    weight: 700,
+    energy: 410,
+  
+    size: "Маленькая",
+    type: "Обычное тесто",
+    id: "73f5cd52-2c0d-44a0-b902-44a0b9022c0d",
+  
+    additionalVariants: [
+      {
+        price: 450,
+        weight: 820,
+        energy: 430,
+  
+        size: "Большая",
+        type: "Обычное тесто",
+        id: "86544daa-6017-42c2-ab3e601742c2ab3e",
+      },
+      {
+        price: 600,
+        weight: 1100,
+        energy: 570,
+  
+        size: "Большая",
+        type: "Тонкое тесто",
+        id: "4daaab3e-6017-ab3e-42c2-601748654",
+      },
+      {
+        price: 300,
+        weight: 600,
+        energy: 200,
+  
+        size: "Маленькая",
+        type: "Тонкое тесто",
+        id: "920f8c0a-4000-9f15a5-ad6b-016d22123a",
+      },
+      {
+        price: 700,
+        weight: 1500,
+        energy: 800,
+  
+        size: "XL",
+        type: "Тонкое тесто",
+        id: "8601742daa-6017-86544daa-2c0d2ab3e",
+      },
+    ],
+  };
+
   const [cartSum, setCartSum] = React.useState(0);
-  const [currentPrice, setCurrentPrice] = React.useState(Product.price);
-  const [currentWeight, setCurrentWeight] = React.useState(Product.weight);
-  const [currentEnergy, setCurrentEnergy] = React.useState(Product.energy);
-
-  let unsortedTypeArray = [];
-  for (let i = 0; i < Product.additionalVariants.length; i++) {
-    unsortedTypeArray.push(Product.additionalVariants[i].type);
-  }
-
-  let typeArray = unsortedTypeArray.unshift(Product.type);
-  typeArray = Array.from(new Set(unsortedTypeArray));
-
-  let unsortedSizeArray = [];
-  for (let i = 0; i < Product.additionalVariants.length; i++) {
-    unsortedSizeArray.push(Product.additionalVariants[i].size);
-  }
-
-  let sizeArray = unsortedSizeArray.unshift(Product.size);
-  sizeArray = Array.from(new Set(unsortedSizeArray));
+  const [activeFooter, setActiveFooter] = React.useState(false);
 
   return (
-    <>
-      <motion.div
-      className="main_block"
-      initial = {{
-        opacity:0
-      }}
-      animate = {{
-        opacity:1
-      }}
-      transition={{
-        duration:2
-      }}
-      >
-        <BlockImage source={Product.image} />
-        <div className="text_block">
-          <Category value={Product.category} />
-          <Title value={Product.title} />
-          <Description value={Product.description} />
-          <motion.div
-          className="inline-info"
-          
-          >
-            <Weight value={currentWeight} />
-            <Energy value={currentEnergy} />
-          </motion.div>
-          <Buttons
-            mainArray={Product}
-            sizeArray={sizeArray}
-            typeArray={typeArray}
-            setCurrentPrice={setCurrentPrice}
-            setCurrentWeight={setCurrentWeight}
-            setCurrentEnergy={setCurrentEnergy}
-            additionalVariants={Product.additionalVariants}
-          />
-          <div 
-          className="price_box">
-            <Price value={currentPrice} />
-          </div>
-          <div
-          className="cart_box"
-          
-          >
-            <AddCart
-              value={currentPrice}
-              setCartSum={setCartSum}
-              setActiveFooter={setActiveFooter}
-            />
-            <div className="like">
-            <svg 
-            id="icon" 
-            version="1.0" 
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1280.000000 1189.000000"
-            preserveAspectRatio="xMidYMid meet">
-            
-<g transform="translate(0.000000,1189.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M3250 11884 c-25 -2 -106 -11 -180 -20 -1485 -172 -2704 -1295 -3001
--2764 -133 -660 -67 -1507 171 -2223 252 -753 675 -1411 1397 -2172 342 -360
-634 -630 1588 -1470 231 -203 488 -430 570 -505 1024 -920 1735 -1692 2346
--2547 l130 -183 132 0 132 1 130 192 c557 822 1212 1560 2185 2461 191 178
-408 373 1027 923 956 852 1445 1343 1841 1850 643 825 968 1603 1064 2553 19
-196 17 665 -5 835 -105 805 -441 1497 -998 2054 -557 557 -1250 894 -2054 998
--193 24 -613 24 -810 0 -733 -93 -1379 -387 -1920 -874 -191 -172 -406 -417
--535 -610 -30 -45 -57 -82 -60 -82 -3 0 -30 37 -60 82 -129 193 -344 438 -535
-610 -531 478 -1170 773 -1878 867 -146 20 -562 34 -677 24z"/>
-</g>
-</svg>
+    <div className="global_block">
+    <FirstProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product1}/>
+    <SecondProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product2}/>
+    <ThirdProduct setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product3}/>
+    {activeFooter && (
+          <div className="footer_box">
+            <FooterCart value={cartSum} />
+            <div className="footer_clear">
+              <img
+                onClick={() => setCartSum(0)}
+                src={TrashIcon}
+                alt="TrashImg"
+                className="icon_delete"
+              />
             </div>
           </div>
-        </div>
-      </motion.div>
-      {activeFooter && (
-        <div className="footer_box">
-          <FooterCart value={cartSum} />
-          <div className="footer_clear">
-            <img
-              onClick={() => setCartSum(0)}
-              src={TrashIcon}
-              alt="TrashImg"
-              className="icon_delete"
-            />
-          </div>
-        </div>
-      )}
-    </>
+        )}
+    </div>
   );
 }
 export default App;

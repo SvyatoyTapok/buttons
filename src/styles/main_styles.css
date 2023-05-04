@@ -1,17 +1,20 @@
 body{
-  background-color: rgb(150, 150, 150);
-
+  background-color: rgb(255, 255, 255);
 }
-
+.global_block{
+  display: flex;
+ 
+}
 .main_block {
   display: flex;
-  height: 94.6vh;
   align-items: center;
   justify-content: center;
+  width: 640px;
 }
 
 .text_block {
   padding-left: 30px;
+
 }
 
 .clicked {
@@ -85,7 +88,8 @@ body{
 .footer_box {
   width: 100vw;
   transition-duration: 0.5s;
-
+  position: absolute;
+  margin-top: 910px;
   justify-content: center;
   text-align: center;
   align-items: center;
