@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 function Buttons(props) {
   const [activeTypeButton, setActiveTypeButton] = React.useState(0);
   const [activeSizeButton, setActiveSizeButton] = React.useState(0);
+
   if (props.additionalVariants[0].size !== props.mainArray.size) {
     props.additionalVariants.unshift({
       price: props.mainArray.price,
@@ -22,16 +23,16 @@ function Buttons(props) {
       type: props.mainArray.type,
     });
   }
-  let clickedTypeOfSizeArray = props.additionalVariants.filter(
+
+ let clickedTypeOfSizeArray = props.additionalVariants.filter(
     (obj) => obj.type === props.typeArray[activeTypeButton]
   );
-  console.log(clickedTypeOfSizeArray);
+  
   return (
     <div className="buttons">
       <div className="type">
         {props.typeArray.map((value, index) => (
           <motion.div
-         
             whileTap={{
               scale: 0.9,
             }}
@@ -39,10 +40,12 @@ function Buttons(props) {
             onClick={() => {
               setActiveTypeButton(index);
               setActiveSizeButton(0);
+              
+              clickedTypeOfSizeArray = props.additionalVariants.filter(
+                (obj) => obj.type === props.typeArray[index]
+              );
 
               props.setCurrentPrice(clickedTypeOfSizeArray[0].price)
-              props.setCurrentWeight(clickedTypeOfSizeArray[0].weight)
-              props.setCurrentEnergy(clickedTypeOfSizeArray[0].energy)
             }}
             key={index}
           >
@@ -53,7 +56,6 @@ function Buttons(props) {
       <div className="size">
         {clickedTypeOfSizeArray.map((value, index) => (
           <motion.div
-          
             whileTap={{
               scale: 0.9,
             }}

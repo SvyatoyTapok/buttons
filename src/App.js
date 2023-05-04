@@ -113,10 +113,13 @@ function App() {
           <Category value={Product.category} />
           <Title value={Product.title} />
           <Description value={Product.description} />
-          <div className="inline-info">
+          <motion.div
+          className="inline-info"
+          
+          >
             <Weight value={currentWeight} />
             <Energy value={currentEnergy} />
-          </div>
+          </motion.div>
           <Buttons
             mainArray={Product}
             sizeArray={sizeArray}
