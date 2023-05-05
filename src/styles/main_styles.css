@@ -1,11 +1,10 @@
-body{
+body {
   background-color: rgb(141, 141, 141);
 }
-.global_block{
+.global_block {
   height: 100vh;
   display: flex;
   justify-content: space-around;
- 
 }
 .main_block {
   display: flex;
@@ -22,7 +21,6 @@ body{
 
 .text_block {
   padding-left: 30px;
-
 }
 
 .clicked {
@@ -98,16 +96,18 @@ body{
   transition-duration: 0.5s;
   position: absolute;
   margin-top: 910px;
+  display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   height: 50px;
-  background-color: rgb(136, 165, 199);
+  background-color: rgb(21, 177, 120);
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 18px;
 }
 .icon_delete {
+  margin-left: 20px;
   display: flex;
   width: 25px;
   height: 25px;
