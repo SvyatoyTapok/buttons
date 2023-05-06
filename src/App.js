@@ -19,6 +19,8 @@ function App() {
       <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product3} />
       <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product4} />
       
+     
+
       <AnimatePresence>
         {activeFooter && (
           <motion.div
