@@ -28,6 +28,11 @@ function Buttons(props) {
     (obj) => obj.type === props.typeArray[activeTypeButton]
   );
 
+  function byField(field) {
+    return (a, b) => a[field] > b[field] ? 1 : -1;
+  }
+  clickedTypeOfSizeArray.sort(byField('price'));
+
   return (
     <div className="buttons">
       <div className="type">
@@ -41,9 +46,15 @@ function Buttons(props) {
               setActiveTypeButton(index);
               setActiveSizeButton(0);
 
+              function byField(field) {
+                return (a, b) => a[field] > b[field] ? 1 : -1;
+              }
+
               clickedTypeOfSizeArray = props.additionalVariants.filter(
                 (obj) => obj.type === props.typeArray[index]
               );
+              clickedTypeOfSizeArray.sort(byField('price'));
+              
 
               props.setCurrentPrice(clickedTypeOfSizeArray[0].price);
               props.setCurrentWeight(clickedTypeOfSizeArray[0].weight);

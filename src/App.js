@@ -7,6 +7,7 @@ import FooterCart from "./components/FooterCart";
 import Product1 from "./Product1";
 import Product2 from "./Product2";
 import Product3 from "./Product3";
+import Product4 from "./Product4";
 import { motion, AnimatePresence } from "framer-motion";
 function App() {
   const [cartSum, setCartSum] = React.useState(0);
@@ -16,6 +17,8 @@ function App() {
       <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product1} />
       <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product2} />
       <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product3} />
+      <Product setCartSum={setCartSum} setActiveFooter={setActiveFooter} Product={Product4} />
+      
       <AnimatePresence>
         {activeFooter && (
           <motion.div

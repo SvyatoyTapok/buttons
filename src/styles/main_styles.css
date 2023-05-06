@@ -1,16 +1,17 @@
 body {
-  background-color: rgb(141, 141, 141);
+  background-color: rgb(88, 88, 88);
 }
 .global_block {
   height: 100vh;
   display: flex;
   justify-content: space-around;
+  max-width: 1920px;
 }
 .main_block {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
+  width: 450px;
   box-shadow: 0.4em 0.4em 25px 0.4em rgba(42, 105, 56, 0.5);
   height: 800px;
   margin-top: 70px;

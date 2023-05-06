@@ -35,6 +35,8 @@ function Product({ Product, setActiveFooter, setCartSum }) {
   let sizeArray = unsortedSizeArray.unshift(Product.size);
   sizeArray = Array.from(new Set(unsortedSizeArray));
 
+
+
   return (
     <>
       <motion.div
@@ -80,7 +82,7 @@ function Product({ Product, setActiveFooter, setCartSum }) {
             />
             <div className="like">
               <motion.svg
-                onClick={() => console.log(setFavourite((state) => !state))}
+                onClick={() => setFavourite((state) => !state)}
                 fill={favourite ? "#DC143C" : "grey"}
                 id="icon"
                 version="1.0"
