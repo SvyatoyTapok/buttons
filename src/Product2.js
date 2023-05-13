@@ -25,5 +25,6 @@ const Product2 = {
       },
     ],
   };
-
+// let  myProduct2 = JSON.parse(Product2)
+// console.log(myProduct2)
   export default Product2

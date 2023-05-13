@@ -7,36 +7,33 @@ import Category from "./Category";
 import Title from "./Title";
 import Description from "./Description";
 import Price from "./Price";
-
 import AddCart from "./AddCart";
 import BlockImage from "./BlockImage";
 import Buttons from "./Buttons";
 import React from "react";
+import { footerContext } from "../App";
 
-function Product({ Product, setActiveFooter, setCartSum }) {
-  const [currentPrice, setCurrentPrice] = React.useState(Product.price);
-  const [currentWeight, setCurrentWeight] = React.useState(Product.weight);
-  const [currentEnergy, setCurrentEnergy] = React.useState(Product.energy);
+function Product({ Products }) {
+  const { setCartSum, setActiveFooter } = React.useContext(footerContext);
+
+  const [currentPizza,setCurrentPizza] = React.useState({
+    price : Products.price,
+    weight : Products.weight,
+    energy : Products.energy,
+    id : Products.id
+  })
+
+  let currentPrice = currentPizza.price
+  let currentWeight = currentPizza.weight
+  let currentEnergy = currentPizza.energy
+
   const [favourite, setFavourite] = React.useState(false);
 
-  let unsortedTypeArray = [];
-  for (let i = 0; i < Product.additionalVariants.length; i++) {
-    unsortedTypeArray.push(Product.additionalVariants[i].type);
-  }
-
-  let typeArray = unsortedTypeArray.unshift(Product.type);
-  typeArray = Array.from(new Set(unsortedTypeArray));
-
-  let unsortedSizeArray = [];
-  for (let i = 0; i < Product.additionalVariants.length; i++) {
-    unsortedSizeArray.push(Product.additionalVariants[i].size);
-  }
-
-  let sizeArray = unsortedSizeArray.unshift(Product.size);
-  sizeArray = Array.from(new Set(unsortedSizeArray));
+ 
+let typeArray = ["loch","ya"]
 
 
-
+ 
   return (
     <>
       <motion.div
@@ -52,36 +49,32 @@ function Product({ Product, setActiveFooter, setCartSum }) {
         }}
       >
         <div className="text_block">
-          <Category value={Product.category} />
-          <Title value={Product.title} />
-          <BlockImage source={Product.image} />
-          <Description value={Product.description} />
+          <Category value={Products.category} />
+          <Title value={Products.title} />
+          <BlockImage source={Products.image} />
+          <Description value={Products.description} />
           <div className="inline-info">
             <Weight value={currentWeight} />
             <Energy value={currentEnergy} />
           </div>
           <Buttons
-            mainArray={Product}
-            sizeArray={sizeArray}
             typeArray={typeArray}
-            setCurrentPrice={setCurrentPrice}
-            setCurrentWeight={setCurrentWeight}
-            setCurrentEnergy={setCurrentEnergy}
-            additionalVariants={Product.additionalVariants}
+
+            setCurrentPizza={setCurrentPizza}
+            
           />
           <div className="price_box">
             <Price value={currentPrice} />
           </div>
           <div className="cart_box">
             <AddCart
-              product={Product}
+              product={Products}
               value={currentPrice}
               setCartSum={setCartSum}
               setActiveFooter={setActiveFooter}
-             
             />
             <div className="like">
-              <motion.svg
+              <svg
                 onClick={() => setFavourite((state) => !state)}
                 fill={favourite ? "#DC143C" : "grey"}
                 id="icon"
@@ -106,7 +99,7 @@ function Product({ Product, setActiveFooter, setCartSum }) {
                     610 -531 478 -1170 773 -1878 867 -146 20 -562 34 -677 24z"
                   />
                 </g>
-              </motion.svg>
+              </svg>
             </div>
           </div>
         </div>
