@@ -15,6 +15,9 @@ function App() {
   const [cartSum, setCartSum] = React.useState(0);
   const [activeFooter, setActiveFooter] = React.useState(false);
 
+
+
+
   return (
     <div className="global_block">
       <footerContext.Provider value={{ cartSum, setCartSum, activeFooter, setActiveFooter }}>

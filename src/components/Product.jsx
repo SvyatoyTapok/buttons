@@ -13,27 +13,32 @@ import Buttons from "./Buttons";
 import React from "react";
 import { footerContext } from "../App";
 
+
 function Product({ Products }) {
   const { setCartSum, setActiveFooter } = React.useContext(footerContext);
-
-  const [currentPizza,setCurrentPizza] = React.useState({
-    price : Products.price,
-    weight : Products.weight,
-    energy : Products.energy,
-    id : Products.id
-  })
-
-  let currentPrice = currentPizza.price
-  let currentWeight = currentPizza.weight
-  let currentEnergy = currentPizza.energy
-
   const [favourite, setFavourite] = React.useState(false);
 
- 
-let typeArray = ["loch","ya"]
+  const types = [
+    {
+      id: '...',
+      type: 'Обычное тесто',
+      sizes: [
+        {
+          id: '...',
+          size: 'Маленький',
+        },
+        {
+          id: '...',
+          size: 'Средняя',
+        },
+        {
+          id: '...',
+          size: 'Большая',
+        }
+      ]
+    },
+  ]
 
-
- 
   return (
     <>
       <motion.div
@@ -54,22 +59,17 @@ let typeArray = ["loch","ya"]
           <BlockImage source={Products.image} />
           <Description value={Products.description} />
           <div className="inline-info">
-            <Weight value={currentWeight} />
-            <Energy value={currentEnergy} />
+            <Weight value={0} />
+            <Energy value={0} />
           </div>
-          <Buttons
-            typeArray={typeArray}
-
-            setCurrentPizza={setCurrentPizza}
-            
-          />
+          <Buttons typeArray={types} setCurrentPizza={0} />
           <div className="price_box">
-            <Price value={currentPrice} />
+            <Price value={0} />
           </div>
           <div className="cart_box">
             <AddCart
               product={Products}
-              value={currentPrice}
+              value={0}
               setCartSum={setCartSum}
               setActiveFooter={setActiveFooter}
             />
