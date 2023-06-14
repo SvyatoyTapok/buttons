@@ -13,31 +13,33 @@ import Buttons from "./Buttons";
 import React from "react";
 import { footerContext } from "../App";
 
-
 function Product({ Products }) {
   const { setCartSum, setActiveFooter } = React.useContext(footerContext);
   const [favourite, setFavourite] = React.useState(false);
 
-  const types = [
+  let firstPizza = [
     {
-      id: '...',
-      type: 'Обычное тесто',
-      sizes: [
-        {
-          id: '...',
-          size: 'Маленький',
-        },
-        {
-          id: '...',
-          size: 'Средняя',
-        },
-        {
-          id: '...',
-          size: 'Большая',
-        }
-      ]
+      price: Products.price,
+      weight: Products.weight,
+      energy: Products.energy,
+      size: Products.size,
+      type: Products.type,
+      id: Products.id,
     },
-  ]
+  ];
+
+  let allPizzas = firstPizza.concat(Products.additionalVariants);
+
+  let typeArray = allPizzas.map((el) => {
+    return el.type;
+  });
+
+  typeArray = Array.from(new Set(typeArray));
+
+  let sizeArray = allPizzas.map((el) => {
+    return el.size;
+  });
+  sizeArray = Array.from(new Set(sizeArray));
 
   return (
     <>
@@ -58,11 +60,16 @@ function Product({ Products }) {
           <Title value={Products.title} />
           <BlockImage source={Products.image} />
           <Description value={Products.description} />
+
           <div className="inline-info">
             <Weight value={0} />
             <Energy value={0} />
           </div>
-          <Buttons typeArray={types} setCurrentPizza={0} />
+          <Buttons
+            sizeArray={sizeArray}
+            typeArray={typeArray}
+            setCurrentPizza={0}
+          />
           <div className="price_box">
             <Price value={0} />
           </div>

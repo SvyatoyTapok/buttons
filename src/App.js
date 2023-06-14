@@ -27,6 +27,7 @@ function App() {
         <Product Products={Product4} /> */}
 
         <AnimatePresence>
+          
           {activeFooter && (
             <motion.div
               className="footer_box"
